@@ -59,6 +59,8 @@ function checkIfValid(){
     }
 }
 
+// NIE TO LICZYSZ JEŁOPIE INNY TOTAL MIAŁ BYĆXDDDDD
+
 function calculateTotal(bill, nOfPeople, precent){
     let perPerson = (bill*precent/nOfPeople).toFixed(2)
     let total = (bill*precent).toFixed(2)

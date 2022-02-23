@@ -14,7 +14,6 @@ body{
     height: 100vh;
     display: flex;
     align-items: center;
-    /* justify-content: center; */
     flex-direction: column;
     background-color: hsl(185, 41%, 84%)
 }
@@ -257,6 +256,9 @@ div.total {
         margin-left: 2em;
     }
 
+    .total span{
+        font-size: 0.85rem;
+    }
     .total .cash{
         font-size: 2rem
     }
