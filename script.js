@@ -5,6 +5,14 @@ const reset_button = document.getElementById('reset-button')
 let last = -1
 
 
+
+
+//  ********************************************************
+//
+// adding click event to every button with precent to choose
+//
+// *********************************************************
+
 for(let i = 0; i<button_prct.length;i++){
     button_prct[i].addEventListener("click", () =>{
         let prct = parseFloat(button_prct[i].textContent)/100
@@ -24,6 +32,12 @@ for(let i = 0; i<button_prct.length;i++){
 reset_button.addEventListener('click', reset)
 
 
+// ***********************************************
+
+// Checking if inputs with numbers are not empty 
+// or if the numbers are not negative
+
+// ***********************************************
 
 function checkIfValid(){
     let bill = bill_input.value

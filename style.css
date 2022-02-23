@@ -132,7 +132,7 @@ div.total {
 
 .total p{
     color:hsl(0, 0%, 100%);
-    margin: 1.75em 1em 0 1.25em;
+    margin: 1.75em 1em 0 1.5em;
 }
 
 .total span{
@@ -199,17 +199,18 @@ div.total {
     }
     body{
         justify-content: center;
+        gap: 2em;
     }
     img{
-        margin-bottom: 2em;
+        /* margin-bottom: 3em; */
         height: 8vh;
     }
     main{
         justify-content: space-evenly;
         flex-direction: row;
         border-radius: 1.25em;
-        height: 50vh;
-        width: 100vh;
+        height: 55vh;
+        width: 110vh;
     }
     .container{
         width: 60%;
@@ -241,7 +242,7 @@ div.total {
         text-decoration: 1px underline wavy;
     }
     div p{
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
     div.down{
         margin-bottom: 9.5em;
