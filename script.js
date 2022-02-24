@@ -13,19 +13,27 @@ let last = -1
 //
 // *********************************************************
 
-for(let i = 0; i<button_prct.length;i++){
-    button_prct[i].addEventListener("click", () =>{
-        let prct = parseFloat(button_prct[i].textContent)/100
-        if(checkIfValid()){
-            let bill = bill_input.value
-            let nOfPeople = nOfPeople_input.value
-            calculateTotal(bill, nOfPeople, prct)
-            if(last != -1){
-                button_prct[last].classList.remove('precent-clicked')
-            }
-            button_prct[i].classList.add('precent-clicked')
-            last = i
+for (let i = 0; i < button_prct.length; i++) {
+    button_prct[i].addEventListener("click", () => {
+        // let prct = parseFloat(button_prct[i].textContent)/100
+        // if(checkIfValid()){
+        //     let bill = bill_input.value
+        //     let nOfPeople = nOfPeople_input.value
+        //     calculateTotal(bill, nOfPeople, prct)
+        //     if(last != -1){
+        //         button_prct[last].classList.remove('precent-clicked')
+        //     }
+        //     button_prct[i].classList.add('precent-clicked')
+        //     last = i
+        // }
+        if (last != -1) {
+            button_prct[last].classList.remove('precent-clicked')
         }
+        button_prct[i].classList.add('precent-clicked')
+        last = i
+        checkIfValid()
+
+
     })
 }
 
@@ -39,53 +47,110 @@ reset_button.addEventListener('click', reset)
 
 // ***********************************************
 
-function checkIfValid(){
+function checkIfValid() {
     let bill = bill_input.value
     let nOfPeople = nOfPeople_input.value
     let valid = true
-    if(bill == '' || bill == null || bill<=0){
+    if (bill == '' || bill == null || bill <= 0) {
         valid = false
     }
-    if(nOfPeople == '' || nOfPeople == null || nOfPeople<=0){
+    if (nOfPeople == '' || nOfPeople == null || nOfPeople <= 0) {
         valid = false
     }
 
-    if(valid){
+    if (valid) {
         console.log(valid)
-        return true
+        calculateTotal()
     }
-    else{
-        return false
+    else {
+        console.log("Nie działa sadge")
     }
 }
 
 // NIE TO LICZYSZ JEŁOPIE INNY TOTAL MIAŁ BYĆXDDDDD
 
-function calculateTotal(bill, nOfPeople, precent){
-    let perPerson = (bill*precent/nOfPeople).toFixed(2)
-    let total = (bill*precent).toFixed(2)
-    console.log(perPerson)
-    console.log(total)
+function calculateTotal() {
+    let precent = 0
+    if (last != -1) {
+        precent = parseFloat(button_prct[last].textContent) / 100
+    }
+    else {
+        precent = 0
+    }
+
+    let bill = parseFloat(bill_input.value)
+    let nOfPeople = parseFloat(nOfPeople_input.value)
+
+    let perPerson = (bill * precent / nOfPeople).toFixed(2)
+
+    let total = ((bill + perPerson * nOfPeople) / nOfPeople).toFixed(2)
     setPrices(perPerson, total)
+
 }
 
-function setPrices(perPerson, total){
-    let tipPp = document.getElementById('TipPp')
-    tipPp.innerHTML = "$" + perPerson
-    let tipT = document.getElementById('TipT')
-    tipT.innerHTML = "$" + total
+// await new Promise(r => setTimeout(r, 2000));
+
+function setPrices(perPerson, total) {
+    let tipPpP = document.getElementById('TipPp')
+    let tipToT = document.getElementById('TipT')
+    changeCash(tipPpP.textContent,perPerson,tipPpP)
+    let cashPp = ""
+    let cashTo = ""
+    for(let l = 1;l<tipPpP.textContent.length;l++){
+        cashPp += tipPpP.textContent[l]
+    }
+    for(let l = 1;l<tipToT.textContent.length;l++){
+        cashTo += tipToT.textContent[l]
+    }
+    changeCash(cashPp,perPerson,tipPpP)
+    changeCash(cashTo,total,tipToT)
 }
 
-function reset(){
+async function changeCash(oldC, newC, element){
+    if(parseFloat(oldC)<parseFloat(newC)){
+        for(let i = parseFloat(oldC); i<parseFloat(newC);i){
+            if(i+1<parseFloat(newC)){
+                i = i+1
+            }
+            else if(i+0.1<parseFloat(newC)){
+                i = i + 0.1
+            }
+            else{
+                i = i + 0.01
+            }
+            i = parseFloat(i.toFixed(2))
+            element.innerHTML = "$" + i.toFixed(2)
+            await new Promise(r => setTimeout(r, 35))
+        }
+    }
+    else{
+        for(let i = parseFloat(oldC); i>parseFloat(newC);i){
+            
+            if(i-1>parseFloat(newC)){
+                i = i-1
+            }
+            else if(i-0.1>parseFloat(newC)){
+                i = i - 0.1
+            }
+            else{
+                i = i-0.01
+            }
+            i = parseFloat(i.toFixed(2))
+            element.innerHTML = "$" + i.toFixed(2)
+            await new Promise(r => setTimeout(r, 35))
+        }
+    }
+}
+
+function reset() {
     let tipPp = document.getElementById('TipPp')
     tipPp.innerHTML = "$0.00"
     let tipT = document.getElementById('TipT')
     tipT.innerHTML = "$0.00"
     bill_input.value = null
     nOfPeople_input.value = null
-    if(last!=-1){
+    if (last != -1) {
         button_prct[last].classList.remove('precent-clicked')
         last = -1
     }
-    
 }
