@@ -81,7 +81,21 @@ div p{
 }
 .buttons .custom{
     background-color: hsl(189, 41%, 97%);
-    color: hsl(186, 14%, 43%)
+    color: hsl(186, 14%, 43%);
+}
+
+.custom-input{
+    width: 90%;
+    height: 1.4em;
+    margin: 0;
+    padding: 0;
+}
+.custom-hide{
+    display: none;
+}
+
+.buttons button.custom-clicked{
+    background-color: hsl(172, 67%, 45%);
 }
 
 .second{
@@ -156,12 +170,28 @@ div.total {
     font-weight: bold;
     padding: 0.65em 0;
     width: 85%;
+    box-sizing: border-box;
+}
+
+.total button:hover{
+    
+    color: hsl(172, 67%, 45%);
+    background-color: hsl(183, 100%, 15%);
+    border: 2px solid hsl(172, 67%, 45%);
+    padding: 0.5em 0;
+
 }
 
 .footer{
     font-size: 0.5rem;
     text-align: center;
     color: hsl(184, 14%, 56%);
+}
+div.custom-div{
+    width: 90%;
+    height: 1em;
+    margin: 0em auto;
+    text-align: right;
 }
 
 .footer a{
@@ -188,10 +218,31 @@ div.total {
     margin: 0;
 }
 
-.precent-clicked {
+.buttons button.precent-clicked {
     color: hsl(183, 100%, 15%);
     background-color: hsl(172, 67%, 45%);
 }
+
+.input-desc{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 89%;
+}
+.error{
+    font-size: 1em;
+    color: red;
+    display:none
+}
+
+.error-show{
+    display: inline
+}
+.input-error{
+    box-sizing: border-box;
+    border: 1.5px solid red;
+}
+
 
 
 

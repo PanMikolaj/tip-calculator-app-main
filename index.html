@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  
+
   <title>Mikołaj K | Tip calculator app</title>
 
 </head>
@@ -19,29 +19,30 @@
   <main>
 
 
-    
+
 
 
     <div class="container">
 
       <div class="bill">
-        <p>Bill</p>
+        <p class="input-desc">Bill<span id="bill_span" class="error">Can't be empty or less than 0</span></p>
         <input type="number" class="bill-input" id="billek">
       </div>
       <div class="second">
-        <p>Select Tip %</p>
+        <p class="input-desc">Select Tip %<span id="sTip-span" class="error">Precentages can't be less than 0</span></p>
         <div class="buttons">
           <button class="button-prct">5%</button>
           <button class="button-prct">10%</button>
           <button class="button-prct">15%</button>
           <button class="button-prct">25%</button>
           <button class="button-prct">50%</button>
-          <button class="custom">Custom</button>
+          <button class="custom" id="custom-button"><span id="custom-span">Custom</span><input class="custom-input" id="custom-input" type="number"></button>
         </div>
 
       </div>
       <div class="nOfPeople">
-        <p>Number of People</p>
+        <p class="input-desc">Number of People<span id="nPeople_span" class="error">Can't be empty or less than 0</span>
+        </p>
         <input type="number" class="people-input" id="nOfPeople-input">
       </div>
 
@@ -64,11 +65,12 @@
           </p>
           <p class="cash" id="TipT">$0.00</p>
         </div>
-        <button id="reset-button">Reset</button>        
+        <button id="reset-button">Reset</button>
       </div>
       <p class="footer">Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend
-        Mentor</a>.
-      Coded by <a href="https://www.linkedin.com/in/miko%C5%82aj-kasperkiewicz-95986b232/">Mikołaj Kasperkiewicz</a>.</p>
+          Mentor</a>.
+        Coded by <a href="https://www.linkedin.com/in/miko%C5%82aj-kasperkiewicz-95986b232/">Mikołaj Kasperkiewicz</a>.
+      </p>
 
     </div>
 
